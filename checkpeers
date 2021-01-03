@@ -20,7 +20,7 @@ if [ "$MINAPEERS" != "" ]
             echo ""
             echo "adding peers..wait"
             sleep 2
-         #  echo "$EMBEDDINGPEERS"
+            $EMBEDDINGPEERS
             echo "Done!, Relaunch the Daemon is not Needed.Bye!"
             else
                 exit 0
