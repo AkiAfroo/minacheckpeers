@@ -4,7 +4,7 @@ MINAHOME='HOME'
 LOCAL="${!MINAHOME}/peers.txt"
 ONLINE="https://raw.githubusercontent.com/MinaProtocol/coda-automation/bug-bounty-net/terraform/testnets/testworld/peers.txt"
 
-#EMBEDDINGPEERS=$(cat ${LOCAL} | xargs -I % coda advanced add-peers %)
+EMBEDDINGPEERS=$(coda advanced add-peers ~/peers.txt)
 MINAPEERS=$(diff <(cat "${LOCAL}") <(curl -s "$ONLINE")) 
 if [ "$MINAPEERS" != "" ] 
     then
@@ -19,7 +19,6 @@ if [ "$MINAPEERS" != "" ]
             wget -O ${LOCAL} -q --show-progress $ONLINE 
             echo ""
             echo "adding peers..wait"
-            coda advanced add-peers ~/peers.txt
             sleep 2
          #  echo "$EMBEDDINGPEERS"
             echo "Done!, Relaunch the Daemon is not Needed.Bye!"
