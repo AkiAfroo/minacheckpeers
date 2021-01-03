@@ -1,0 +1,34 @@
+#!/bin/bash
+clear
+MINAHOME='HOME'
+LOCAL="${!MINAHOME}/peers.txt"
+ONLINE="https://raw.githubusercontent.com/MinaProtocol/coda-automation/bug-bounty-net/terraform/testnets/testworld/peers.txt"
+
+#EMBEDDINGPEERS=$(cat ${LOCAL} | xargs -I % coda advanced add-peers %)
+MINAPEERS=$(diff <(cat "${LOCAL}") <(curl -s "$ONLINE")) 
+if [ "$MINAPEERS" != "" ] 
+    then
+        echo "New Peers were found!"
+        printf '\e[1;31m%-6s\e[m' "these lines have changed------>"
+        printf "$MINAPEERS\n"
+            echo ""
+            printf '\e[1;34m%-6s\e[m' "Mina Protocol TestWorld !"
+            echo ""
+            read -p "Do you want to download the new peers file? (y/n) " YEP1
+        if [ "$YEP1" = "y" ]; then
+            wget -O ${LOCAL} -q --show-progress $ONLINE 
+            echo ""
+            echo "adding peers..wait"
+            coda advanced add-peers ~/peers.txt
+            sleep 2
+         #  echo "$EMBEDDINGPEERS"
+            echo "Done!, Relaunch the Daemon is not Needed.Bye!"
+            else
+                exit 0
+        fi
+
+
+    else
+        echo "No Update, Your Peers are syncronized!"
+fi
+
