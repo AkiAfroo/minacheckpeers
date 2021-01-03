@@ -9,6 +9,7 @@ MINAPEERS=$(diff <(cat "${LOCAL}") <(curl -s "$ONLINE"))
 if [ "$MINAPEERS" != "" ] 
     then
         echo "New Peers were found!"
+        echo ""
         printf '\e[1;31m%-6s\e[m' "these lines have changed------>"
         printf "$MINAPEERS\n"
             echo ""
@@ -21,6 +22,7 @@ if [ "$MINAPEERS" != "" ]
             echo "adding peers..wait"
             sleep 2
             $EMBEDDINGPEERS
+            echo ""
             echo "Done!, Relaunch the Daemon is not Needed.Bye!"
             else
                 exit 0
