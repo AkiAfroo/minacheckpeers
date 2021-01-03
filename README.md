@@ -1,6 +1,6 @@
 # minacheckpeers
 
-[![ksnip-20210103-092836.png](https://i.postimg.cc/nLgFfGX8/ksnip-20210103-092836.png)](https://postimg.cc/94P5GTP1)
+[![ksnip-20210103-092836.png](https://i.postimg.cc/cCZNd9Zz/ksnip-20210103-092836.png)](https://postimg.cc/478051Yv)
 
 * Mina check if local peers are updated.
 * wget https://raw.githubusercontent.com/AkiAfroo/minacheckpeers/main/checkpeers
