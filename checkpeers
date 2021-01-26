@@ -21,7 +21,11 @@ if [ "$MINAPEERS" != "" ]
             echo ""
             echo "adding peers..wait"
             sleep 2
-            $EMBEDDINGPEERS
+             if [  "$(ps aux | grep "coda" | grep -v "grep")"  ]; then
+                cat peers.txt | xargs -I % coda advanced add-peers %
+            else
+                $EMBEDDINGPEERS
+            fi
             echo ""
             echo "Done!, Relaunch the Daemon is not Needed.Bye!"
             else
