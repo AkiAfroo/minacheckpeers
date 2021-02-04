@@ -2,7 +2,7 @@
 clear
 MINAHOME='HOME'
 LOCAL="${!MINAHOME}/peers.txt"
-ONLINE="https://raw.githubusercontent.com/MinaProtocol/mina/encore-peers/automation/terraform/testnets/testworld/peers.txt"
+ONLINE="https://raw.githubusercontent.com/MinaProtocol/mina/encore-peers/automation/terraform/testnets/encore/peers.txt"
 #ONLINE="https://raw.githubusercontent.com/MinaProtocol/coda-automation/bug-bounty-net/terraform/testnets/testworld/peers.txt"
 EMBEDDINGPEERS=$(coda advanced add-peers ~/peers.txt)
 MINAPEERS=$(diff <(cat "${LOCAL}") <(curl -s "$ONLINE")) 
